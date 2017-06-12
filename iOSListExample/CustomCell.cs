@@ -15,7 +15,7 @@ namespace iOSListExample
         private readonly int itemHeight = 50;
         private readonly int itemWidth = 50;
 
-		UILabel titleLabel, descriptionLabel;
+		UILabel titleLabel;
 
 		public CustomCell (IntPtr p):base(p) // for the new cell reuse
 		{
@@ -29,13 +29,15 @@ namespace iOSListExample
 				BackgroundColor = UIColor.Clear
 			};
 
-			ContentView.AddSubviews (new UIView[] { titleLabel, descriptionLabel });
+			ContentView.AddSubviews (new UIView[] { titleLabel });
 		}
 
 		public CustomCell (NSString cellId) : base (UITableViewCellStyle.Default, cellId)
 		{
 			SelectionStyle = UITableViewCellSelectionStyle.Blue;
 			ContentView.BackgroundColor = UIColor.FromRGB (27, 16, 117);
+
+            // Create the Title Label
 
 			titleLabel = new UILabel () 
 			{
@@ -44,7 +46,7 @@ namespace iOSListExample
 				BackgroundColor = UIColor.Clear
 			};
 
-            // Adding a collection view
+            // Create the Collection View layout
 
 			layout = new UICollectionViewFlowLayout
 			{
@@ -54,20 +56,30 @@ namespace iOSListExample
                 ItemSize = new SizeF(itemWidth, itemHeight)
 			};
 
+            // Create the Collection Ciew
+
             collectionView = new UICollectionView(ContentView.Bounds, layout);
+
+            // Create the Collection View Source
 
             source = new CVSource() {
                 ItemWidth = itemWidth, 
                 ItemHeight = itemHeight
             };
+            collectionView.Source = source;
+
+            // Register the TextCell class for the Cells in the Collection View
 
 			collectionView.RegisterClassForCell(typeof(TextCell), TextCell.CellId);
-			collectionView.Source = source;
+
+			// Add the Subviews to the TableViewCell
 
 			ContentView.AddSubviews(new UIView[] {
 				titleLabel,
                 collectionView
 			});
+
+            // Set the frames and constraints for the Title Label and Collection View
 
 			titleLabel.Frame = new RectangleF(5, 4, (float)ContentView.Bounds.Width - 63, 25);
    			collectionView.Frame = new RectangleF(0, 30, 170, 200);
@@ -111,9 +123,9 @@ namespace iOSListExample
 			base.LayoutSubviews ();
 		}
 
-        // gsm
+		// CVSource - the Collection View Source
 
-        class CVSource : UICollectionViewSource
+		class CVSource : UICollectionViewSource
 		{
 			string[] data = { "one", "two", "three", "four", "five", "six", "seven" };
 
@@ -173,6 +185,8 @@ namespace iOSListExample
 			}
 		}
 
+        // TextCell - the Collection View Cells
+
 		class TextCell : UICollectionViewCell
 		{
 			public UILabel label;
@@ -189,32 +203,6 @@ namespace iOSListExample
 				{
 					label.Text = value;
 					SetNeedsDisplay();
-				}
-			}
-
-            private int _ItemWidth;
-			public int ItemWidth
-			{
-				get
-				{
-					return _ItemWidth;
-				}
-				set
-				{
-					_ItemWidth = value;
-				}
-			}
-
-			private int _ItemHeight;
-			public int ItemHeight
-			{
-				get
-				{
-                    return _ItemHeight;
-				}
-				set
-				{
-					_ItemHeight = value;
 				}
 			}
 
