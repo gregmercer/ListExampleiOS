@@ -5,7 +5,7 @@ Note: Selecting "Custom List" from the Home Page displays - an example of how to
 
 Two key lines in getting this to work are found here:
 
-'''
+```
     public partial class ListCustomViewController : UIViewController
     {
         ...
@@ -18,4 +18,4 @@ Two key lines in getting this to work are found here:
 
             table.RowHeight = UITableView.AutomaticDimension;
             table.EstimatedRowHeight = new nfloat(15.0);
-'''
+```
