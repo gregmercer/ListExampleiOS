@@ -1,0 +1,10 @@
+/packages/
+*/bin/
+*/obj/
+**/obj/
+**/bin/
+*.user
+*.userprefs
+*.suo
+/.vs/
+**/Resource.Designer.cs
