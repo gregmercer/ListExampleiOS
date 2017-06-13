@@ -10,7 +10,7 @@ namespace iOSListExample
 	{
 
 		protected List<ListItem> listItems;
-		protected string CellId= "TableCell";
+		protected string CellId = "TableCell";
 
         public ListSourceFromCustomCell(List<ListItem> items)
 		{
@@ -31,10 +31,17 @@ namespace iOSListExample
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath) 
         {
             var cell = tableView.DequeueReusableCell(CellId) as CustomCell;
+
             if (cell == null)
+            {
                 cell = new CustomCell((NSString)CellId);
-            cell.UpdateCell(listItems[indexPath.Row].Title
-                , listItems[indexPath.Row].Description);
+            }
+
+            cell.UpdateCell(
+                listItems[indexPath.Row].Title,
+                listItems[indexPath.Row].Description
+            );
+
             return cell;
         }
 

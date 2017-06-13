@@ -23,7 +23,6 @@
     <MtouchLink>None</MtouchLink>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchI18n>
     </MtouchI18n>
   </PropertyGroup>
@@ -99,6 +98,12 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\Group_Image_AllElse.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Group_Image_AllElse.imageset\Group_All_Else%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Group_Image_AllElse.imageset\Group_All_Else%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Group_Image_StudentOrg.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\Group_Image_StudentOrg.imageset\Group_Student_Org%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\Group_Image_StudentOrg.imageset\Group_Student_Org%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -127,11 +132,23 @@
     <Compile Include="ListSources\ListSourceStyles.cs" />
     <Compile Include="ListSources\ListMenuSource.cs" />
     <Compile Include="Models\Group.cs" />
+    <Compile Include="ViewControllers\ListCustomImageViewController.cs" />
+    <Compile Include="ViewControllers\ListCustomImageViewController.designer.cs">
+      <DependentUpon>ListCustomImageViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListSources\ListSourceFromCustomImageCell.cs" />
+    <Compile Include="CustomImageCell.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="ViewControllers\" />
     <Folder Include="ListSources\" />
+    <Folder Include="Images\" />
+    <Folder Include="Resources\Images.xcassets\Group_Image_AllElse.imageset\" />
+    <Folder Include="Resources\Images.xcassets\Group_Image_StudentOrg.imageset\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="ViewControllers\ListCustomImageViewController.xib" />
   </ItemGroup>
 </Project>

@@ -34,6 +34,7 @@ namespace iOSListExample
 				new ListMenuItem {Title = "List Bound to an Array", PageType = typeof(ListArrayViewController)}, 
 				new ListMenuItem {Title = "List Bound to a Data Model", PageType = typeof(ListModelViewController)},
 				new ListMenuItem {Title = "Custom List", PageType = typeof(ListCustomViewController)},
+                new ListMenuItem {Title = "Custom Image List", PageType = typeof(ListCustomImageViewController)},
 				new ListMenuItem {Title = "List with Grouping", PageType = typeof(ListModelGroupedViewController)},
 				new ListMenuItem {Title = "List with New Cell Reuse", PageType = typeof(ListModelViewControllerCellReuse)}
 			};
