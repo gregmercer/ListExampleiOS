@@ -133,8 +133,8 @@ namespace iOSListExample
 			{
 				UIImage image = UIImage.FromBundle(data[indexPath.Row]);
 
-				var imageWidth = 2 * image.Size.Width;
-				var imageHeight = 2 * image.Size.Height;
+				var imageWidth  = image.CurrentScale * image.Size.Width;
+				var imageHeight = image.CurrentScale * image.Size.Height;
 
 				return new CGSize(imageWidth, imageHeight);
 			}
@@ -165,8 +165,8 @@ namespace iOSListExample
 
                 UIImage image = UIImage.FromBundle(data[indexPath.Row]);
 
-                var imageWidth  = 2 * image.Size.Width;
-                var imageHeight = 2 * image.Size.Height;
+                var imageWidth  = image.CurrentScale * image.Size.Width;
+                var imageHeight = image.CurrentScale * image.Size.Height;
 
 				imageCell.imageView.Frame = new RectangleF(
                     (float)imageCell.imageView.Frame.Left, (float)imageCell.imageView.Frame.Top,
